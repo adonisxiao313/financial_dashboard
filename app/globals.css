@@ -1,0 +1,257 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: var(--font-jakarta), "Plus Jakarta Sans", sans-serif;
+  --font-mono: var(--font-plex), "IBM Plex Mono", ui-monospace, monospace;
+
+  --color-paper: #f4f8fb;
+  --color-surface: #ffffff;
+  --color-ink: #14343c;
+  --color-secondary: #5c7380;
+  --color-hairline: #e3eef3;
+  --color-muted: #8aa0ab;
+  --color-hover: #f3fbfa;
+  --color-teal: #0e9b8a;
+  --color-teal-wash: #e7f7f4;
+  --color-coral: #ff6b57;
+  --color-sun: #f5b942;
+  --color-sky: #4c9be8;
+  --color-active-fg: #0e9b8a;
+  --color-active-bg: #e7f7f4;
+  --color-invited-fg: #b7791f;
+  --color-invited-bg: #fff6de;
+  --color-suspended-fg: #e11d48;
+  --color-suspended-bg: #ffe8ee;
+
+  --shadow-card: 0 10px 30px rgba(20, 70, 90, 0.06);
+}
+
+html,
+body {
+  min-height: 100%;
+}
+
+body {
+  min-height: 100vh;
+  color: var(--color-ink);
+  background-color: var(--color-paper);
+  font-size: 15px;
+  line-height: 1.45;
+}
+
+::selection {
+  background: #c8efe8;
+  color: #14343c;
+}
+
+:focus-visible {
+  outline: 2px solid #0e9b8a;
+  outline-offset: 2px;
+}
+
+input[type="search"]::-webkit-search-decoration,
+input[type="search"]::-webkit-search-cancel-button {
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.figure {
+  font-family: var(--font-fraunces), "Fraunces", "Iowan Old Style", Palatino, serif;
+  font-weight: 520;
+  font-variation-settings: "SOFT" 30, "opsz" 72, "wght" 520;
+  font-variant-numeric: lining-nums;
+  letter-spacing: -0.03em;
+  line-height: 0.95;
+}
+
+@keyframes route-in {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes logo-settle {
+  from {
+    opacity: 0;
+    transform: translateY(-6px) scale(0.92);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes dialog-in {
+  from {
+    opacity: 0;
+    transform: scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes list-fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes drawer-in {
+  from {
+    transform: translateX(-16px);
+    opacity: 0;
+  }
+  to {
+    transform: none;
+    opacity: 1;
+  }
+}
+
+@keyframes draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes pulse-dot {
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.35;
+    transform: scale(0.75);
+  }
+}
+
+@keyframes row-in {
+  from {
+    background-color: #e7f7f4;
+  }
+  to {
+    background-color: transparent;
+  }
+}
+
+@keyframes bar-grow {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+.route-in {
+  animation: route-in 280ms ease-out;
+}
+
+.logo-mark {
+  animation: logo-settle 640ms ease-out;
+}
+
+.animate-dialog {
+  animation: dialog-in 220ms ease-out;
+}
+
+.animate-fade {
+  animation: fade 180ms ease-out;
+}
+
+.animate-drawer {
+  animation: drawer-in 240ms ease-out;
+}
+
+.list-fade {
+  animation: list-fade 220ms ease-out;
+}
+
+.chart-line {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  animation: draw 900ms ease forwards;
+}
+
+.chart-area {
+  opacity: 0;
+  animation: fade 700ms ease 180ms forwards;
+}
+
+.bar-grow {
+  transform-origin: left center;
+  animation: bar-grow 700ms ease forwards;
+}
+
+.lift {
+  transition: transform 150ms ease, box-shadow 150ms ease;
+}
+
+.lift:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 34px rgba(20, 70, 90, 0.1);
+}
+
+.live-dot {
+  animation: pulse-dot 1.4s ease-in-out infinite;
+}
+
+.row-in {
+  animation: row-in 1.5s ease-out;
+}
+
+.bar-grow {
+  transition: width 700ms ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .route-in,
+  .logo-mark,
+  .animate-dialog,
+  .animate-fade,
+  .animate-drawer,
+  .list-fade,
+  .chart-area,
+  .bar-grow,
+  .lift {
+    animation: none;
+    transform: none;
+  }
+
+  .chart-line {
+    animation: none;
+    stroke-dashoffset: 0;
+  }
+
+  .chart-area {
+    opacity: 1;
+  }
+
+  .lift:hover {
+    transform: none;
+  }
+
+  .live-dot,
+  .row-in {
+    animation: none;
+  }
+}
